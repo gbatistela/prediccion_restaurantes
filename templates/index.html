@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI Restaurante Predictor</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <div class="header">
+        <h1>Predicción de Restaurantes</h1>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+
+        <!-- Cuadro de inputs -->
+        <div class="inputs-container">
+            <h2>Ingrese los detalles:</h2>
+            <form action="/predict/" method="post">
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" name="estado" required>
+
+                <label for="valoraciones">Número de Valoraciones:</label>
+                <input type="number" id="valoraciones" name="valoraciones" required>
+
+                <label for="estacionamiento">Estacionamiento para discapacitados (SI/NO):</label>
+                <input type="text" id="estacionamiento" name="estacionamiento" required>
+
+                <label for="almuerzo">Almuerzo (SI/NO):</label>
+                <input type="text" id="almuerzo" name="almuerzo" required>
+
+                <label for="cena">Cena (SI/NO):</label>
+                <input type="text" id="cena" name="cena" required>
+
+                <label for="comer_solo">Comer solo (SI/NO):</label>
+                <input type="text" id="comer_solo" name="comer_solo" required>
+
+                <label for="grupos">Apto para grupos (SI/NO):</label>
+                <input type="text" id="grupos" name="grupos" required>
+
+                <label for="turistas">Frecuentado por turistas (SI/NO):</label>
+                <input type="text" id="turistas" name="turistas" required>
+
+                <label for="debito">Acepta Débito (SI/NO):</label>
+                <input type="text" id="debito" name="debito" required>
+
+                <label for="nfc">Pago NFC (SI/NO):</label>
+                <input type="text" id="nfc" name="nfc" required>
+
+                <label for="credito">Acepta Crédito (SI/NO):</label>
+                <input type="text" id="credito" name="credito" required>
+
+                <label for="servicio_rapido">Servicio Rápido (SI/NO):</label>
+                <input type="text" id="servicio_rapido" name="servicio_rapido" required>
+
+                <!-- Nuevos campos -->
+                <label for="takeout">Takeout (SI/NO):</label>
+                <input type="text" id="takeout" name="takeout" required>
+
+                <label for="delivery">Delivery (SI/NO):</label>
+                <input type="text" id="delivery" name="delivery" required>
+
+                <button type="submit">Predecir</button>
+            </form>
+        </div>
+
+        <!-- Cuadro de predicción -->
+        {% if prediction %}
+        <div class="prediction-container">
+            <h2>Resultado de la Predicción:</h2>
+            <p><strong>Restaurante:</strong> {{ prediction.Nombre }}</p>
+            <p><strong>Calificación:</strong> {{ prediction.Promedio }}</p>
+            <p><strong>Estado:</strong> {{ prediction.Estado }}</p>
+            <p><strong>Número de Valoraciones:</strong> {{ prediction.Valoraciones }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Pie de contacto -->
+    <div class="footer">
+        <p>Desarrollado por <strong>Veronica van Vugt</strong> | Contacto: <a href="mailto:vero14062003@gmail.com">vero14062003@gmail.com</a></p>
+    </div>
+</body>
+</html>
